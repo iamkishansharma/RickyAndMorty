@@ -40,6 +40,7 @@ final class RMCharacterListView: UIView {
         
         addConstraint()
         spinner.startAnimating()
+        characterViewModel.delegate = self
         characterViewModel.fetchChanracters()
         setUpCollectionView()
     }
@@ -65,14 +66,18 @@ final class RMCharacterListView: UIView {
     private func setUpCollectionView() {
         collectionView.dataSource = characterViewModel
         collectionView.delegate = characterViewModel
+    }
+}
+
+
+extension RMCharacterListView: RMCharacterListViewViewModelDelegate {
+    func didLoadInitialCharacters() {
+        spinner.stopAnimating()
+        collectionView.isHidden = false
+        collectionView.reloadData() // reload data on initial fetch
+        UIView.animate(withDuration: 0.4){
+            self.collectionView.alpha = 1
+        }
         
-        DispatchQueue.main.asyncAfter(deadline: .now()+2, execute: {
-            self.spinner.stopAnimating()
-            self.collectionView.isHidden = false
-            
-            UIView.animate(withDuration: 0.4) {
-                self.collectionView.alpha = 1
-            }
-        })
     }
 }
