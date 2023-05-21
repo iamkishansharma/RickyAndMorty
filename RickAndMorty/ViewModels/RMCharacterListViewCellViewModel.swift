@@ -6,10 +6,11 @@
 //
 import Foundation
 
-final class RMCharacterListViewCellViewModel {
+final class RMCharacterListViewCellViewModel: Hashable, Equatable {
     public let characterName: String
     private let characterStatus: RMCharacterStatus
     private let characterImageUrl: URL?
+
     
     // MARK: - Init
     init(
@@ -42,5 +43,17 @@ final class RMCharacterListViewCellViewModel {
             completion(.success(data))
         }
         task.resume()
+    }
+    
+    // MARK: - Hashable
+    
+    static func == (lhs: RMCharacterListViewCellViewModel, rhs: RMCharacterListViewCellViewModel) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(characterName)
+        hasher.combine(characterStatus)
+        hasher.combine(characterImageUrl)
     }
 }
