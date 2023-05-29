@@ -9,7 +9,7 @@ import UIKit
 
 /// View for single character's information
 class RMCharacterDetailView: UIView {
-
+    
     public var collectionView: UICollectionView?
     private let viewModel: RMCharacterDetailViewViewModel
     
@@ -40,22 +40,20 @@ class RMCharacterDetailView: UIView {
     }
     
     private func addConstraints() {
-        
         guard let collectionView = collectionView else {
             return
         }
         
         NSLayoutConstraint.activate([
-                spinner.widthAnchor.constraint(equalToConstant: 100),
-                spinner.heightAnchor.constraint(equalToConstant: 100),
-                spinner.centerXAnchor.constraint(equalTo: centerXAnchor),
-                spinner.centerYAnchor.constraint(equalTo: centerYAnchor),
-                
-                collectionView.topAnchor.constraint(equalTo: topAnchor),
-                collectionView.leftAnchor.constraint(equalTo: leftAnchor),
-                collectionView.rightAnchor.constraint(equalTo: rightAnchor),
-                collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            spinner.widthAnchor.constraint(equalToConstant: 100),
+            spinner.heightAnchor.constraint(equalToConstant: 100),
+            spinner.centerXAnchor.constraint(equalTo: centerXAnchor),
+            spinner.centerYAnchor.constraint(equalTo: centerYAnchor),
             
+            collectionView.topAnchor.constraint(equalTo: topAnchor),
+            collectionView.leftAnchor.constraint(equalTo: leftAnchor),
+            collectionView.rightAnchor.constraint(equalTo: rightAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     
@@ -76,7 +74,6 @@ class RMCharacterDetailView: UIView {
     
     
     private func createSection(for sectionIndex: Int) -> NSCollectionLayoutSection {
-        
         let sectionType = viewModel.sections
         
         switch sectionType[sectionIndex] {
@@ -87,7 +84,6 @@ class RMCharacterDetailView: UIView {
         case .episodes:
             return viewModel.createEpisodesSectionLayout()
         }
-        
     }
     
 }
