@@ -49,7 +49,20 @@ final class RMCharacterEpisodeCollectionViewCell: UICollectionViewCell {
     
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
+            seasonLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            seasonLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
+            seasonLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
+            seasonLabel.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.3),
             
+            nameLabel.topAnchor.constraint(equalTo: seasonLabel.bottomAnchor),
+            nameLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
+            nameLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
+            nameLabel.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.3),
+            
+            airDateLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor),
+            airDateLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
+            airDateLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
+            airDateLabel.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.3)
         ])
         
     }
