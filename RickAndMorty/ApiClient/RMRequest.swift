@@ -91,7 +91,7 @@ final class RMRequest {
                 if let rmEndpoint = RMEndpoint(rawValue: endpointString) {
                     self.init(
                         endpoint: rmEndpoint,
-                        pathComponents: []
+                        pathComponents: pathComponents
                     )
                     return
                 }
