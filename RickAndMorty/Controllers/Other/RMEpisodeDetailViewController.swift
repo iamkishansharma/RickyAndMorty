@@ -11,11 +11,11 @@ import UIKit
 /// ViewController to showdetail about an episode
 final class RMEpisodeDetailViewController: UIViewController {
 
-    private let url: URL?
+    private let viewModel:RMEpisodeDetailViewViewModel
     
     //MARK: - Init
     init(url: URL?) {
-        self.url = url
+        self.viewModel = .init(url: url)
         super.init(nibName: nil, bundle: nil)
     }
     
